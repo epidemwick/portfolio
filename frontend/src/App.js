@@ -5,7 +5,7 @@ import { useRef, useEffect, useState} from 'react'
 function App() {
 	const [education, setEducation] = useState([])
 	const [work, setWork] = useState([])
-	const [portfolio, setPortfolio] = useState([])
+	const [project, setProject] = useState([])
 
 	useEffect(() => {
 		getData()
@@ -14,7 +14,7 @@ function App() {
 	const homeRef = useRef(null)
 	const educationRef = useRef(null)
 	const workRef = useRef(null)
-	const portfolioRef = useRef(null)
+	const projectRef = useRef(null)
 
 	const getData = async () => {
 		const educationResponse = await fetch('/education')
@@ -25,14 +25,14 @@ function App() {
 		const workData = await workResponse.json()
 		setWork(workData)
 		
-		const portfolioResponse = await fetch('/portfolio')
-		const portfolioData = await portfolioResponse.json()
-		setPortfolio(portfolioData)
+		const projectResponse = await fetch('/project')
+		const projectData = await projectResponse.json()
+		setProject(projectData)
 	}
 	
   return (
 	<>
-	<Nav homeRef={homeRef} educationRef={educationRef} workRef={workRef} portfolioRef={portfolioRef} />
+	<Nav homeRef={homeRef} educationRef={educationRef} workRef={workRef} projectRef={projectRef} />
 	<div className='md:h-screen pt-10' ref={homeRef}>
 		<div className='md:w-2/4 w-10/12 mx-auto mt-10 mb-3'>
 			<h1 className='text-5xl mb-3'>Christian J. Chadwick</h1>
@@ -79,19 +79,20 @@ function App() {
 		</div>
 	</div>
 	 
-	<div className='md:h-screen pt-16' ref={portfolioRef}>
+	<div className='md:h-screen pt-16' ref={projectRef}>
 		<div className='mb-5 mx-5'>
-			<h1 className='text-5xl mb-3'>Portfolio</h1>
-			<p className='text-lg text-cyan-900'>Take a look at some of my recent projects that I have built</p>
+	  <h1 className='text-5xl mb-3'>Projects</h1>
+	  <p className='text-lg text-cyan-900'>Take a look at some of my recent projects that I have built</p>
 		</div>
 		
 		<div className='grid md:grid-cols-3 grid-col-1 gap-4 mx-5'>
-			{portfolio && portfolio.map(p => (
+			{project && project.map(p => (
 				<div key={p.id} className='border rounded-sm p-3 shadow'>
-				<h3 className='text-lg border-b-2 border-slate-300 text-slate-800'>{p.title}</h3>
-				<a className='py-2 text-blue-500 hover:text-blue-700 transition cursor-pointer' href={p.url}>View Code</a>
-				<p>{p.description}</p>
-		</div>
+					<h3 className='text-lg border-b-2 border-slate-300 text-slate-800'>{p.title}</h3>
+					<a className='py-2 text-blue-500 hover:text-blue-700 transition cursor-pointer' href={p.url}>View Code</a>
+					<img alt='Image Failed' src={p.image}/>
+					<p>{p.description}</p>
+				</div>
 			))}
 		</div>
 	</div>	 

@@ -16,10 +16,26 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
+from portfolio_app.views import EducationViewSet, WorkViewSet, ProjectViewSet, UserViewSet
+from blog.views import PostViewSet
+from django.conf import settings
+from django.conf.urls.static import static
+
+# Create a router instance
+router = routers.DefaultRouter()
+
+# Register viewsets with the router
+router.register(r'users', UserViewSet)
+router.register(r'education', EducationViewSet)
+router.register(r'work', WorkViewSet)
+router.register(r'project', ProjectViewSet)
+router.register(r'posts', PostViewSet)
 
 urlpatterns = [
-    path('', include('portfolio_app.urls')),
+    path('', include(router.urls)),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('', include('blog.urls')),
-]
+    path('api/', include(router.urls)),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Education, Work, Portfolio
+from .models import Education, Work, Project
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,9 +17,9 @@ class WorkSerializer(serializers.ModelSerializer):
         model = Work
         fields = '__all__'
 
-class PortfolioSerializer(serializers.ModelSerializer):
+class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Portfolio
+        model = Project
         fields = '__all__'
 
 

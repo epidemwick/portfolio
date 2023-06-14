@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-const Nav = ({homeRef, educationRef, portfolioRef, workRef}) => {
+const Nav = ({homeRef, educationRef, projectRef, workRef}) => {
 	const [toggleMenu, setToggleMenu] = useState(false)
 
 	const navIconHandler = e => {
@@ -20,7 +20,7 @@ const Nav = ({homeRef, educationRef, portfolioRef, workRef}) => {
 				<li className='mx-3 my-4 text-2xl text-slate-900 hover:text-slate-700 transition' onClick={() => executeScroll(homeRef)}>Christian J. Chadwick</li>
 				<li className='mx-3 my-5 text-slate-900 hover:text-slate-700 transition'onClick={() => executeScroll(educationRef)}>Education</li>		
 				<li className='mx-3 my-5 text-slate-900 hover:text-slate-700 transition'onClick={() => executeScroll(workRef)}>Work Experience</li>
-				<li className='mx-3 my-5 text-slate-900 hover:text-slate-700 transition'onClick={() => executeScroll(portfolioRef)}>Project Portfolio</li>	
+				<li className='mx-3 my-5 text-slate-900 hover:text-slate-700 transition'onClick={() => executeScroll(projectRef)}>Projects</li>	
 				</ul>
 			</div>
 			
@@ -45,7 +45,7 @@ const Nav = ({homeRef, educationRef, portfolioRef, workRef}) => {
 					<div className='grid grid-cols-1 bg-stone-100 cursor-pointer'>
 						<div className='mx-3 my-5 text-slate-900:text-slate-700 transition'onClick={() => executeScroll(educationRef)}>Education</div>
 						<div className='mx-3 my-5 text-slate-900:text-slate-700 transition'onClick={() => executeScroll(workRef)}>Work Experience</div>
-						<div className='mx-3 my-5 text-slate-900:text-slate-700 transition'onClick={() => executeScroll(portfolioRef)}>Portfolio</div>
+						<div className='mx-3 my-5 text-slate-900:text-slate-700 transition'onClick={() => executeScroll(projectRef)}>Projects</div>
 					</div>
 				</div>
 			</div>

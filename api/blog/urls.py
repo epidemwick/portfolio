@@ -2,15 +2,9 @@ from django.urls import include, path
 from rest_framework import routers
 from . import views
 
-router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'post', views.PostViewSet)
 
-#wire up our API using automatic URL routing.
-#Additionally, we include login URLS for the browsable API.
+urlpatterns = [
 
-urlpatterns=[
-                path('',include(router.urls)),
-            ]
+]
 
 

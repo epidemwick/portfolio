@@ -14,7 +14,7 @@ class Work(models.Model):
     description = models.TextField()
     ordinal = models.IntegerField()
 
-class Portfolio(models.Model):
+class Project(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     image = models.ImageField(upload_to='uploads')

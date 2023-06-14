@@ -2,8 +2,8 @@ from django.contrib.auth.models import User
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
 from .serializers import UserSerializer
-from .models import Education, Work, Portfolio
-from .serializers import EducationSerializer, WorkSerializer, PortfolioSerializer
+from .models import Education, Work, Project
+from .serializers import EducationSerializer, WorkSerializer, ProjectSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -23,8 +23,8 @@ class WorkViewSet(viewsets.ModelViewSet):
     serializer_class = WorkSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
-class PortfolioViewSet(viewsets.ModelViewSet):
-    queryset = Portfolio.objects.all()
-    serializer_class = PortfolioSerializer
+class ProjectViewSet(viewsets.ModelViewSet):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
